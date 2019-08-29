@@ -556,6 +556,7 @@ GameObject:
   - component: {fileID: 549029098}
   - component: {fileID: 549029100}
   - component: {fileID: 549029099}
+  - component: {fileID: 549029101}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -582,7 +583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 21.2, y: 105}
+  m_AnchoredPosition: {x: 0.000047684, y: 95}
   m_SizeDelta: {x: 1620.8, y: 398}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &549029099
@@ -622,6 +623,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549029097}
   m_CullTransparentMesh: 0
+--- !u!95 &549029101
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549029097}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 168acb70c880a3a4294c7f5f6d6ae1e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &735481203
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,10 +784,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 78
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 5
     m_MaxSize: 106
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -843,7 +863,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 78
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1112,7 +1132,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1015154418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1791754487}
+        m_MethodName: DisplayNextSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1015154418
@@ -1342,7 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38688fda85daae5419ccee188dc2b9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockCursor: 1
+  lockCursor: 0
   mouseSensitivity: 10
   target: {fileID: 738334706}
   dstFromTarget: 3.5
@@ -2144,6 +2175,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3715db632a645f347b84118044544238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameText: {fileID: 833921096}
+  dialogueText: {fileID: 815302133}
+  dialogues:
+  - name: Narrator
+    sentences:
+    - Our hero has to go and find the sword
+    - He was told that this is the only sword that can harm the king
+    - Our hero now is on his way to get the sword
+  sentences: []
+  anim: {fileID: 549029101}
 --- !u!4 &1791754488
 Transform:
   m_ObjectHideFlags: 0

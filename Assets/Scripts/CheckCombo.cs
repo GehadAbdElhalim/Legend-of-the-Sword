@@ -16,7 +16,7 @@ public class CheckCombo : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log(pressed);
+        //Debug.Log(pressed);
         if (Movement.canGetInput && !pressed && Input.GetMouseButtonDown(0) && !lastmove)
         {
             Movement.comboCounter += 1;

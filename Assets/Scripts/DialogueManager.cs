@@ -1,29 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    Queue<string> sentences;
+    public Text nameText;
+    public Text dialogueText;
+    public Dialogue[] dialogues;
+    public List<string> sentences;
 
-    void Start()
+    public Animator anim;
+
+    public void StartDialogue(int index)
     {
-        Debug.Log("hey");
-        sentences = new Queue<string>();
-    }
+        anim.SetBool("IsOpen", true);
+        nameText.text = dialogues[index].name;
 
-    public void StartDialogue(Dialogue dialogue)
-    {
-        Debug.Log("talk" + dialogue.name);
-
-        if (sentences.Count > 0)
+        foreach (string sentence in dialogues[index].sentences)
         {
-            sentences.Clear();
-        }
-
-        foreach(string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
+            sentences.Insert(0,sentence);
         }
 
         DisplayNextSentence();
@@ -36,13 +32,24 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+        string sentence = sentences[0];
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+        sentences.RemoveAt(0);
+    }
 
-        string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
 
     void EndDialogue()
     {
-        Debug.Log("End of conversation");
+        anim.SetBool("IsOpen", false);
     }
 }
