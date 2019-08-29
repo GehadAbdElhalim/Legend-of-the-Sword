@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 706071900}
   - component: {fileID: 9051843289878494504}
   - component: {fileID: 738334707}
+  - component: {fileID: 738334703}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -216,6 +217,7 @@ MonoBehaviour:
   movementSpeed: 4
   dashAmount: 2.95
   cooldown: 1
+  currentCooldown: 0
   turnSmoothTime: 0.2
   speedSmoothTime: 0.1
   camera: {fileID: 0}
@@ -238,6 +240,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   currentHealth: 0
+--- !u!114 &738334703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796083634121385317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2fe0ef16547e9468cca39bf1ce5494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CooldownBar: {fileID: 0}
+  healthBar: {fileID: 0}
+  go: {fileID: 796083634121385317}
 --- !u!54 &752243811
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -387,6 +404,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 8c7dcfdb345b4944ebdc37f83c506949,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 87459420cd5537f4c921e7a7b4ff0a5c, type: 2}
     - target: {fileID: -4216859302048453862, guid: 8c7dcfdb345b4944ebdc37f83c506949,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -457,11 +479,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.048
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 8c7dcfdb345b4944ebdc37f83c506949,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 87459420cd5537f4c921e7a7b4ff0a5c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c7dcfdb345b4944ebdc37f83c506949, type: 3}
 --- !u!1 &8653596209079658026 stripped

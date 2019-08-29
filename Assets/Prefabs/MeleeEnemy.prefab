@@ -442,6 +442,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Idle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 8c7dcfdb345b4944ebdc37f83c506949,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6f68fc241e672f941927e0ec7f6373fc, type: 2}
     - target: {fileID: -4216859302048453862, guid: 8c7dcfdb345b4944ebdc37f83c506949,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -512,11 +517,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.048
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 8c7dcfdb345b4944ebdc37f83c506949,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6f68fc241e672f941927e0ec7f6373fc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c7dcfdb345b4944ebdc37f83c506949, type: 3}
 --- !u!4 &2930675585469541133 stripped
