@@ -23,9 +23,9 @@ public class MeleeEnemy : MonoBehaviour
     {
         anim.SetBool("Run", !agent.isStopped);
 
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         {
-            agent.isStopped = false;
+            agent.isStopped = true;
         }
 
         if (!attacking)
