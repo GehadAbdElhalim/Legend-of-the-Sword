@@ -20,8 +20,12 @@ public class Movement : MonoBehaviour
     public LayerMask layerMask;
     public TrailRenderer trail;
     public GameObject arrow;
+    public GameObject Sword;
+    public GameObject Bow;
+    public GameObject Legendary;
     Transform cameraT;
     Animator anim;
+    public static bool UseLegendary = false;
 
     bool isGrounded = true;
     public static int comboCounter = 0;
@@ -33,6 +37,9 @@ public class Movement : MonoBehaviour
         cameraT = camera.transform;
         trail.emitting = false;
         anim = transform.GetChild(0).GetComponent<Animator>();
+        Sword.SetActive(true);
+        Bow.SetActive(false);
+        Legendary.SetActive(false);
         //distToGround = GetComponent<Collider>().bounds.extents.y;
     }
 
@@ -54,6 +61,17 @@ public class Movement : MonoBehaviour
 
         if (!inCombat)
         {
+            Bow.SetActive(false);
+
+            if (UseLegendary)
+            {
+                Legendary.SetActive(true);
+            }
+            else
+            {
+                Sword.SetActive(true);
+            }
+
             comboCounter = 0;
             //Movement
             Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -138,7 +156,7 @@ public class Movement : MonoBehaviour
 
     void Attack(Vector2 inputDir)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2, layerMask);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3, layerMask);
         if (hitColliders.Length != 0)
         {
             int min = 2;
@@ -162,7 +180,16 @@ public class Movement : MonoBehaviour
 
     void Shoot(Vector2 inputDir)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5, layerMask);
+        Bow.SetActive(true);
+        if (UseLegendary) {
+            Legendary.SetActive(false);
+        }
+        else
+        {
+            Sword.SetActive(false);
+        }
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 10, layerMask);
         if (hitColliders.Length != 0)
         {
             int min = 2;
@@ -177,12 +204,12 @@ public class Movement : MonoBehaviour
                 }
             }
 
-            transform.LookAt(new Vector3(hitColliders[min_index].transform.position.x, 0, hitColliders[0].transform.position.z));
+            transform.LookAt(new Vector3(hitColliders[min_index].transform.position.x, 1, hitColliders[0].transform.position.z));
         }
 
         inCombat = true;
         anim.SetTrigger("Shoot");
-        GameObject projectile = Instantiate(arrow,transform.position,Quaternion.identity);
+        GameObject projectile = Instantiate(arrow,new Vector3(transform.position.x,1,transform.position.z),Quaternion.identity);
         projectile.transform.forward = transform.forward;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 10, ForceMode.Impulse);
     }
