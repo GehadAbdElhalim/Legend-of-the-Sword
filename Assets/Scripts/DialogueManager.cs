@@ -12,6 +12,17 @@ public class DialogueManager : MonoBehaviour
 
     public Animator anim;
 
+    private void Update()
+    {
+        if (anim.GetBool("IsOpen"))
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                DisplayNextSentence();
+            }
+        }   
+    }
+
     public void StartDialogue(int index)
     {
         anim.SetBool("IsOpen", true);

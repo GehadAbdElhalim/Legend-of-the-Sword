@@ -35,7 +35,7 @@ public class ThirdPersonCamera : MonoBehaviour
         currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
         transform.eulerAngles = currentRotation;
 
-        transform.position = new Vector3(target.position.x, 1f, target.position.z) - transform.forward * dstFromTarget;
+        transform.position = new Vector3(target.position.x, target.transform.position.y + 2f, target.position.z) - transform.forward * dstFromTarget;
 
     }
 

@@ -55,7 +55,7 @@ public class MeleeEnemy : MonoBehaviour
     void Attack()
     {
         attacking = true;
-        transform.LookAt(new Vector3(target.transform.position.x, 0, target.transform.position.z));
+        transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y , target.transform.position.z));
         //attack animation
         anim.SetInteger("Attack",1);
     }
