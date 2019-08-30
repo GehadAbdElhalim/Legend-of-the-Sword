@@ -11,6 +11,7 @@ TagManager:
   - PlayerArrow
   - slash
   - EnemySlash
+  - spear
   layers:
   - Default
   - TransparentFX

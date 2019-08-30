@@ -15,7 +15,7 @@ public class MeleeEnemy : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = transform.GetChild(1).GetComponent<Animator>();
         agent.SetDestination(target.transform.position);
     }
 
@@ -23,10 +23,10 @@ public class MeleeEnemy : MonoBehaviour
     {
         anim.SetBool("Run", !agent.isStopped);
 
-        //if(anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
-        //{
-
-        //}
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+        {
+            agent.isStopped = false;
+        }
 
         if (!attacking)
         {

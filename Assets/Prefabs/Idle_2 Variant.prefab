@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f6dd4ccb9bb1345a16ae574719c7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Swoerd: {fileID: 0}
+  Legendary: {fileID: 0}
 --- !u!1001 &2193977475113474091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22,17 +24,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 68b3c524ac7fe65429aa8617e445c0a4,
         type: 3}
       propertyPath: m_Name
-      value: Idle_2
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 68b3c524ac7fe65429aa8617e445c0a4,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 87459420cd5537f4c921e7a7b4ff0a5c, type: 2}
-    - target: {fileID: -5753820527625322440, guid: 68b3c524ac7fe65429aa8617e445c0a4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.006
+      value: Idle_2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 68b3c524ac7fe65429aa8617e445c0a4,
         type: 3}
@@ -103,6 +95,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 20.288
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 68b3c524ac7fe65429aa8617e445c0a4,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 87459420cd5537f4c921e7a7b4ff0a5c, type: 2}
+    - target: {fileID: -5753820527625322440, guid: 68b3c524ac7fe65429aa8617e445c0a4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.006
       objectReference: {fileID: 0}
     - target: {fileID: 7976392885153832145, guid: 68b3c524ac7fe65429aa8617e445c0a4,
         type: 3}
