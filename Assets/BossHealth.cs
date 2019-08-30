@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemyHealthSystem : MonoBehaviour
+public class BossHealth : MonoBehaviour
 {
     public float Health;
     public float currentHealth;
@@ -10,7 +10,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
 
     void Start()
     {
-        anim = transform.GetChild(1).GetComponent<Animator>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
         currentHealth = Health;
     }
 
@@ -50,7 +50,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                 else
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
-                    Invoke("Die", 2);
+                    Invoke("Die", 2f);
                 }
             }
         }
@@ -67,7 +67,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                 else
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
-                    Invoke("Die", 2);
+                    Invoke("Die", 2f);
                 }
             }
         }
