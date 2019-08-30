@@ -48,7 +48,7 @@ public class PlayerHealthSystem : MonoBehaviour
             }
         }
 
-        if (other.tag == "slash")
+        if (other.tag == "EnemySlash")
         {
             if (currentHealth > 0)
             {

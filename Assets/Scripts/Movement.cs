@@ -25,12 +25,14 @@ public class Movement : MonoBehaviour
     public GameObject Legendary;
     Transform cameraT;
     Animator anim;
-    public static bool UseLegendary = false;
+    public static bool UseLegendary = true;
 
     bool isGrounded = true;
     public static int comboCounter = 0;
     public static bool canGetInput = false;
     public static bool inCombat = false;
+
+    public GameObject[] Slashes;
 
     private void Start()
     {
@@ -56,6 +58,12 @@ public class Movement : MonoBehaviour
 
         if (inCombat)
         {
+            if(anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
+            {
+                inCombat = false;
+                comboCounter = 0;
+                anim.SetInteger("Combo", 0);
+            }
             anim.SetBool("Run", false);
         }
 
@@ -66,10 +74,14 @@ public class Movement : MonoBehaviour
             if (UseLegendary)
             {
                 Legendary.SetActive(true);
+                Sword.SetActive(false);
+                Legendary.GetComponent<Collider>().enabled = false;
             }
             else
             {
                 Sword.SetActive(true);
+                Legendary.SetActive(false);
+                Sword.GetComponent<Collider>().enabled = false;
             }
 
             comboCounter = 0;
@@ -176,7 +188,12 @@ public class Movement : MonoBehaviour
 
         inCombat = true;
         anim.SetInteger("Combo", ++comboCounter);
+        GameObject slash = Slashes[Random.Range(0, Slashes.Length)];
+        GameObject instance = Instantiate(slash, new Vector3(transform.position.x, 0.5f, transform.position.z), slash.transform.rotation);
+        instance.transform.forward = transform.forward;
+        instance.GetComponent<Rigidbody>().AddForce(instance.transform.forward * 10, ForceMode.Impulse);
     }
+
 
     void Shoot(Vector2 inputDir)
     {
@@ -204,12 +221,12 @@ public class Movement : MonoBehaviour
                 }
             }
 
-            transform.LookAt(new Vector3(hitColliders[min_index].transform.position.x, 1, hitColliders[0].transform.position.z));
+            transform.LookAt(new Vector3(hitColliders[min_index].transform.position.x, 0.5f, hitColliders[0].transform.position.z));
         }
 
         inCombat = true;
         anim.SetTrigger("Shoot");
-        GameObject projectile = Instantiate(arrow,new Vector3(transform.position.x,1,transform.position.z),Quaternion.identity);
+        GameObject projectile = Instantiate(arrow,new Vector3(transform.position.x,0.5f,transform.position.z),Quaternion.identity);
         projectile.transform.forward = transform.forward;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 10, ForceMode.Impulse);
     }
