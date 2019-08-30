@@ -14,8 +14,9 @@ public class SpawnSlashes : StateMachineBehaviour
         Target = GameObject.FindGameObjectWithTag("Player");
         GameObject Slash = Slashes[Random.Range(0, Slashes.Length)];
         GameObject instance = Instantiate(Slash, Slasher.transform.position + new Vector3(0, 0.5f, 0), Slash.transform.rotation);
-        instance.transform.LookAt(new Vector3(0, 0.5f, 0) + Target.transform.position);
-        instance.GetComponent<Rigidbody>().AddForce(instance.transform.forward * 10, ForceMode.Impulse);
+        //instance.transform.LookAt(new Vector3(0, 0.5f, 0) + Target.transform.position);
+        instance.transform.up = Slasher.transform.forward;
+        instance.GetComponent<Rigidbody>().AddForce(instance.transform.up * 10, ForceMode.Impulse);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

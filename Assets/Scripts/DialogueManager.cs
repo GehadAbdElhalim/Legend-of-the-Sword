@@ -32,10 +32,10 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-        string sentence = sentences[0];
+        string sentence = sentences[sentences.Count-1];
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
-        sentences.RemoveAt(0);
+        sentences.RemoveAt(sentences.Count-1);
     }
 
     IEnumerator TypeSentence(string sentence)
