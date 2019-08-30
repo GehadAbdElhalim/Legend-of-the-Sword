@@ -229,6 +229,10 @@ MonoBehaviour:
   Sword: {fileID: 8296172668919162081}
   Bow: {fileID: 8296172667997152257}
   Legendary: {fileID: 4983361586344838439}
+  Slashes:
+  - {fileID: 1870684943578171649, guid: 123d2d97e7801de4da8c4f853d7220e4, type: 3}
+  - {fileID: 2986695973798612269, guid: 41aa7ed6e6ada16409955b253259d24d, type: 3}
+  - {fileID: 6006287054957795387, guid: aacc7ca54cfbddf4cb8824c8f0860ff2, type: 3}
 --- !u!114 &738334707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,6 +634,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7755089051372221726, guid: c1d83400f30c15942ad8e4e8b91f09a2,
+        type: 3}
+      propertyPath: Swoerd
+      value: 
+      objectReference: {fileID: 8296172668919162081}
+    - target: {fileID: 7755089051372221726, guid: c1d83400f30c15942ad8e4e8b91f09a2,
+        type: 3}
+      propertyPath: Legendary
+      value: 
+      objectReference: {fileID: 4983361586344838439}
     - target: {fileID: 489946093602820109, guid: c1d83400f30c15942ad8e4e8b91f09a2,
         type: 3}
       propertyPath: m_AABB.m_Center.x
@@ -780,16 +794,6 @@ PrefabInstance:
       propertyPath: m_SelfAndInterCollisionIndices.Array.data[23]
       value: 401
       objectReference: {fileID: 0}
-    - target: {fileID: 7755089051372221726, guid: c1d83400f30c15942ad8e4e8b91f09a2,
-        type: 3}
-      propertyPath: Swoerd
-      value: 
-      objectReference: {fileID: 8296172668919162081}
-    - target: {fileID: 7755089051372221726, guid: c1d83400f30c15942ad8e4e8b91f09a2,
-        type: 3}
-      propertyPath: Legendary
-      value: 
-      objectReference: {fileID: 4983361586344838439}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d83400f30c15942ad8e4e8b91f09a2, type: 3}
 --- !u!4 &8908299739561381684 stripped

@@ -47,76 +47,79 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if (currentCooldown > 0)
+        if (anim.GetInteger("Die") < 1)
         {
-            currentCooldown -= Time.deltaTime;
-        }
-        else
-        {
-            currentCooldown = 0;
-        }
-
-        if (inCombat)
-        {
-            if(anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
+            if (currentCooldown > 0)
             {
-                inCombat = false;
-                comboCounter = 0;
-                anim.SetInteger("Combo", 0);
-            }
-            anim.SetBool("Run", false);
-        }
-
-        if (!inCombat)
-        {
-            Bow.SetActive(false);
-
-            if (UseLegendary)
-            {
-                Legendary.SetActive(true);
-                Sword.SetActive(false);
-                Legendary.GetComponent<Collider>().enabled = false;
+                currentCooldown -= Time.deltaTime;
             }
             else
             {
-                Sword.SetActive(true);
-                Legendary.SetActive(false);
-                Sword.GetComponent<Collider>().enabled = false;
+                currentCooldown = 0;
             }
 
-            comboCounter = 0;
-            //Movement
-            Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            anim.SetBool("Run", input != Vector2.zero);
-            Vector2 inputDir = input.normalized;
-
-            if (inputDir != Vector2.zero)
+            if (inCombat)
             {
-                Run(inputDir);
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
+                {
+                    inCombat = false;
+                    comboCounter = 0;
+                    anim.SetInteger("Combo", 0);
+                }
+                anim.SetBool("Run", false);
             }
 
-            //Jump
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (!inCombat)
             {
-                Jump();
-            }
+                Bow.SetActive(false);
 
-            //Dash
-            if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && currentCooldown == 0)
-            {
-                Dash(inputDir);
-            }
+                if (UseLegendary)
+                {
+                    Legendary.SetActive(true);
+                    Sword.SetActive(false);
+                    Legendary.GetComponent<Collider>().enabled = false;
+                }
+                else
+                {
+                    Sword.SetActive(true);
+                    Legendary.SetActive(false);
+                    Sword.GetComponent<Collider>().enabled = false;
+                }
 
-            //Attack
-            if (Input.GetKeyDown(KeyCode.Mouse0) && isGrounded)
-            {
-                Attack(inputDir);
-            }
+                comboCounter = 0;
+                //Movement
+                Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                anim.SetBool("Run", input != Vector2.zero);
+                Vector2 inputDir = input.normalized;
 
-            //Ranged
-            if (Input.GetKeyDown(KeyCode.Mouse1) && isGrounded)
-            {
-                Shoot(inputDir);
+                if (inputDir != Vector2.zero)
+                {
+                    Run(inputDir);
+                }
+
+                //Jump
+                if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+                {
+                    Jump();
+                }
+
+                //Dash
+                if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && currentCooldown == 0)
+                {
+                    Dash(inputDir);
+                }
+
+                //Attack
+                if (Input.GetKeyDown(KeyCode.Mouse0) && isGrounded)
+                {
+                    Attack(inputDir);
+                }
+
+                //Ranged
+                if (Input.GetKeyDown(KeyCode.Mouse1) && isGrounded)
+                {
+                    Shoot(inputDir);
+                }
             }
         }
     }
@@ -168,7 +171,8 @@ public class Movement : MonoBehaviour
 
     void Attack(Vector2 inputDir)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3, layerMask);
+        float searchDistance = (UseLegendary) ? 10 : 3;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, searchDistance, layerMask);
         if (hitColliders.Length != 0)
         {
             int min = 2;
@@ -190,8 +194,8 @@ public class Movement : MonoBehaviour
         anim.SetInteger("Combo", ++comboCounter);
         GameObject slash = Slashes[Random.Range(0, Slashes.Length)];
         GameObject instance = Instantiate(slash, new Vector3(transform.position.x, 0.5f, transform.position.z), slash.transform.rotation);
-        instance.transform.forward = transform.forward;
-        instance.GetComponent<Rigidbody>().AddForce(instance.transform.forward * 10, ForceMode.Impulse);
+        instance.transform.up = transform.forward;
+        instance.GetComponent<Rigidbody>().AddForce(instance.transform.up * 10, ForceMode.Impulse);
     }
 
 

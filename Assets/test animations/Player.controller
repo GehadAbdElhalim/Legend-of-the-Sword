@@ -73,7 +73,7 @@ AnimatorStateMachine:
     m_Position: {x: 110, y: -270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2508642610243883986}
-    m_Position: {x: 790, y: 470, z: 0}
+    m_Position: {x: 940, y: 500, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -516400240056504359}
@@ -338,7 +338,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Hurt
-  m_Speed: 0.1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2885897587837034315}
@@ -352,7 +352,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -4670154284766924591, guid: ebe7cc3c0587c534cbce147f59b78842,
+  m_Motion: {fileID: -4784048632722871850, guid: 541c74a2defb7824cb9626200b34f8ee,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -923,8 +923,7 @@ AnimatorState:
   m_Name: Die
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 4384785749457808197}
+  m_Transitions: []
   m_StateMachineBehaviours:
   - {fileID: -1506403321118170625}
   m_Position: {x: 50, y: 50, z: 0}
@@ -935,7 +934,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2993534804863918692, guid: 0d0a52ae5899153409dd8084f47a2e2e,
+  m_Motion: {fileID: 4348485665485846014, guid: 7bb4863b07a08444da556d7f77873ebd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -1134,28 +1133,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &4384785749457808197
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 0}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 1
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.8958333
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1102 &4632339722499129167
 AnimatorState:
   serializedVersion: 5

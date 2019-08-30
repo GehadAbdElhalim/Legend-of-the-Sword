@@ -10,7 +10,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
 
     void Start()
     {
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = transform.GetChild(1).GetComponent<Animator>();
         currentHealth = Health;
     }
 
@@ -33,7 +33,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                 else
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
-                    Invoke("Die", 10f);
+                    Invoke("Die", 2f);
                 }
             }
         }
@@ -50,7 +50,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                 else
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
-                    Invoke("Die", 1);
+                    Invoke("Die", 2);
                 }
             }
         }
@@ -67,7 +67,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                 else
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
-                    Invoke("Die", 1);
+                    Invoke("Die", 2);
                 }
             }
         }
