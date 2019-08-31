@@ -34,9 +34,12 @@ public class AnimationEvents : MonoBehaviour
     {
         Movement.canGetInput = false;
         animator.SetInteger("Combo", Movement.comboCounter);
-        GameObject slash = Slashes[Random.Range(0, Slashes.Length)];
-        GameObject instance = Instantiate(slash, new Vector3(transform.position.x, 0.5f, transform.position.z), slash.transform.rotation);
-        instance.transform.forward = transform.parent.transform.forward;
-        instance.GetComponent<Rigidbody>().AddForce(instance.transform.forward * 10, ForceMode.Impulse);
+        if (Movement.UseLegendary)
+        {
+            GameObject slash = Slashes[Random.Range(0, Slashes.Length)];
+            GameObject instance = Instantiate(slash, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), slash.transform.rotation);
+            instance.transform.up = transform.parent.transform.forward;
+            instance.GetComponent<Rigidbody>().AddForce(instance.transform.up * 10, ForceMode.Impulse);
+        }
     }
 }

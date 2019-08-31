@@ -19,7 +19,7 @@ public class BossScript : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(new Vector3(target.transform.position.x, 0, target.transform.position.z));
+        transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
 
         if ( currentTime <= 0 )
         {
