@@ -7,6 +7,8 @@ public class PlayerHealthSystem : MonoBehaviour
     public float Health;
     public float currentHealth;
     Animator anim;
+    public AudioClip Stab;
+    public AudioClip Slash;
 
     void Start()
     {
@@ -29,6 +31,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die")+1);
                 }
+                GetComponent<AudioSource>().PlayOneShot(Stab);
             }
         }
 
@@ -45,6 +48,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                 }
+                GetComponent<AudioSource>().PlayOneShot(Stab);
             }
         }
 
@@ -61,6 +65,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 {
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                 }
+                GetComponent<AudioSource>().PlayOneShot(Slash);
             }
         }
     }

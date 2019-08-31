@@ -7,6 +7,10 @@ public class BossHealth : MonoBehaviour
     public float Health;
     public float currentHealth;
     Animator anim;
+    public AudioClip StabSword;
+    public AudioClip Slash;
+    public AudioClip StabMetal;
+
 
     void Start()
     {
@@ -35,6 +39,7 @@ public class BossHealth : MonoBehaviour
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                     Invoke("Die", 2f);
                 }
+                GetComponent<AudioSource>().PlayOneShot(StabMetal);
             }
         }
 
@@ -52,6 +57,7 @@ public class BossHealth : MonoBehaviour
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                     Invoke("Die", 2f);
                 }
+                GetComponent<AudioSource>().PlayOneShot(StabSword);
             }
         }
 
@@ -69,6 +75,7 @@ public class BossHealth : MonoBehaviour
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                     Invoke("Die", 2f);
                 }
+                GetComponent<AudioSource>().PlayOneShot(Slash);
             }
         }
     }

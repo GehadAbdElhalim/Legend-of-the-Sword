@@ -42,4 +42,9 @@ public class AnimationEvents : MonoBehaviour
             instance.GetComponent<Rigidbody>().AddForce(instance.transform.up * 10, ForceMode.Impulse);
         }
     }
+
+    public void FootStep()
+    {
+        GetComponent<AudioSource>().Play();
+    }
 }

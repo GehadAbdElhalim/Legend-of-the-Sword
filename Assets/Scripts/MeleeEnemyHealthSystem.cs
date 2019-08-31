@@ -7,6 +7,10 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
     public float Health;
     public float currentHealth;
     Animator anim;
+    public AudioClip StabSword;
+    public AudioClip Slash;
+    public AudioClip StabMetal;
+
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                     Invoke("Die", 2f);
                 }
+                GetComponent<AudioSource>().PlayOneShot(StabMetal);
             }
         }
 
@@ -53,6 +58,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                     Invoke("Die", 2);
                 }
+                GetComponent<AudioSource>().PlayOneShot(StabSword);
             }
         }
 
@@ -70,6 +76,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
                     anim.SetInteger("Die", anim.GetInteger("Die") + 1);
                     Invoke("Die", 2);
                 }
+                GetComponent<AudioSource>().PlayOneShot(Slash);
             }
         }
     }

@@ -20,4 +20,9 @@ public class MeleeEnemyAnimationEvents : MonoBehaviour
     {
         spear.GetComponent<Collider>().enabled = false;
     }
+
+    public void FootStep()
+    {
+        GetComponent<AudioSource>().Play();
+    }
 }
