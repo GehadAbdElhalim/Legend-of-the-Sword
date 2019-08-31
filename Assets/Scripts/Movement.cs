@@ -121,6 +121,9 @@ public class Movement : MonoBehaviour
                     Shoot(inputDir);
                 }
             }
+            if(this.transform.position.y<-100){
+            this.transform.position = new Vector3(0f,100f,0f);
+            }
         }
     }
 

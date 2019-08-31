@@ -65,8 +65,8 @@ public class RangedEnemy : MonoBehaviour
     void Attack()
     {
         attacking = true;
-        transform.LookAt(new Vector3(target.transform.position.x, 0, target.transform.position.z));
-        GameObject projectile = Instantiate(arrow,new Vector3(transform.position.x,0.5f,transform.position.z),Quaternion.identity);
+        transform.LookAt(target.transform.position);
+        GameObject projectile = Instantiate(arrow,new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z),Quaternion.identity);
         projectile.transform.forward = transform.forward;
         projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * 10, ForceMode.Impulse);
         //attack animation
