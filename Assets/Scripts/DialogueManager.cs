@@ -62,5 +62,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         anim.SetBool("IsOpen", false);
+        MyGameManager.justEndedConversation = true;
+        MyGameManager.inConversation = false;
     }
 }

@@ -23,6 +23,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
     {
         if (other.tag == "PlayerArrow")
         {
+            Destroy(other.gameObject);
             if (currentHealth > 0)
             {
                 currentHealth -= 5;

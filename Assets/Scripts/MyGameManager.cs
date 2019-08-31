@@ -19,6 +19,8 @@ public class MyGameManager : MonoBehaviour
 
     public static int ConversationNumber = 0;
 
+    public static bool justEndedConversation = false;
+
     private void Start()
     {
         BlackScreen.GetComponent<Animator>().SetBool("GoBlack", true);
@@ -27,7 +29,19 @@ public class MyGameManager : MonoBehaviour
         ConversationNumber = 0;
     }
 
+    private void Update()
+    {
+        if (!inConversation && justEndedConversation)
+        {
+            justEndedConversation = false;
+            BlackScreen.GetComponent<Animator>().SetBool("GoBlack", false);
 
+            if (ConversationNumber == 0)
+            {
+                
+            }
+        }
+    }
 
     public void StratGameState(int State)
     {

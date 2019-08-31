@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-
+    public float LerpSpeed;
     public bool lockCursor;
     public float mouseSensitivity = 10;
     public Transform target;
@@ -35,8 +35,9 @@ public class ThirdPersonCamera : MonoBehaviour
         currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
         transform.eulerAngles = currentRotation;
 
-        transform.position = new Vector3(target.position.x, target.transform.position.y + 2f, target.position.z) - transform.forward * dstFromTarget;
+        Vector3 targetPosition = new Vector3(target.position.x, target.transform.position.y + 2f, target.position.z) - transform.forward * dstFromTarget;
 
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 1);
     }
 
 }
