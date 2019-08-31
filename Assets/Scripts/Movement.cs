@@ -122,7 +122,7 @@ public class Movement : MonoBehaviour
                 }
             }
             if(this.transform.position.y<-100){
-            this.transform.position = new Vector3(0f,100f,0f);
+            this.transform.position = new Vector3(0f,10f,0f);
             }
         }
     }

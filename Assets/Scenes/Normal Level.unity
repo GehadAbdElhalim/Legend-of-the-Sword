@@ -107,10 +107,10 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 55
+    agentClimb: 0.5
     ledgeDropHeight: 0
-    maxJumpAcrossDistance: 0
+    maxJumpAcrossDistance: 2
     minRegionArea: 2
     manualCellSize: 0
     cellSize: 0.16666667
@@ -195,7 +195,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &149474600
 GameObject:
@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1567020430}
+    - target: {fileID: 706071901, guid: 5d1477a5c926ae041b73b836cbe5a584, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d1477a5c926ae041b73b836cbe5a584, type: 3}
 --- !u!1 &289641998 stripped
@@ -873,7 +877,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &738334706 stripped
 Transform:
@@ -2222,14 +2226,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1341049238 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 796083634121385317, guid: 5d1477a5c926ae041b73b836cbe5a584,
-    type: 3}
-  m_PrefabInstance: {fileID: 274929109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358416665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +2797,7 @@ MonoBehaviour:
   SpawnPositionsMelee: []
   SpawnPositionsRanged: []
   SpawnPositionsMixed: []
-  BlackScreen: {fileID: 0}
+  BlackScreen: {fileID: 885104716}
 --- !u!4 &1696401770
 Transform:
   m_ObjectHideFlags: 0
@@ -2913,7 +2911,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850443664
 GameObject:
@@ -3135,12 +3133,12 @@ PrefabInstance:
     - target: {fileID: 4211469260311624541, guid: 003d68b49572a6d4291a694faa49defc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21
+      value: -2.92
       objectReference: {fileID: 0}
     - target: {fileID: 4211469260311624541, guid: 003d68b49572a6d4291a694faa49defc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 8.59
       objectReference: {fileID: 0}
     - target: {fileID: 4211469260311624541, guid: 003d68b49572a6d4291a694faa49defc,
         type: 3}
@@ -3186,11 +3184,36 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1341049238}
+      objectReference: {fileID: 676576320}
     - target: {fileID: 194164047979035381, guid: 003d68b49572a6d4291a694faa49defc,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338443548630350431, guid: 003d68b49572a6d4291a694faa49defc,
+        type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0.0004106462
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338443548630350431, guid: 003d68b49572a6d4291a694faa49defc,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.00023502111
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338443548630350431, guid: 003d68b49572a6d4291a694faa49defc,
+        type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0.00040005147
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338443548630350431, guid: 003d68b49572a6d4291a694faa49defc,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.021291355
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338443548630350431, guid: 003d68b49572a6d4291a694faa49defc,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.019109428
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 003d68b49572a6d4291a694faa49defc, type: 3}
