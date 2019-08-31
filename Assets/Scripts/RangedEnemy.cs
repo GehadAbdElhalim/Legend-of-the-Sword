@@ -18,7 +18,7 @@ public class RangedEnemy : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = transform.GetChild(1).GetComponent<Animator>();
         agent.SetDestination(target.transform.position);
     }
 
@@ -33,7 +33,7 @@ public class RangedEnemy : MonoBehaviour
         anim.SetBool("Run", !agent.isStopped);
         if (dist<minDistance){
             transform.LookAt(target.transform.forward*-1);
-            this.transform.Translate(this.transform.forward*speedFactor);
+            this.transform.Translate(new Vector3(this.transform.forward.x,0, this.transform.forward.z)*speedFactor);
 
              anim.SetBool("Run", true);
              return;
