@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 137290582}
   m_Layer: 9
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,11 +813,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9068082560732970885, guid: 2352efa40c33d4047b6b6bfbd736586d,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 56d70709ebbc0c8429d768a4c2831077, type: 3}
     - target: {fileID: 1830475163501660581, guid: 2352efa40c33d4047b6b6bfbd736586d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -873,6 +868,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 78.91
       objectReference: {fileID: 0}
+    - target: {fileID: 9068082560732970885, guid: 2352efa40c33d4047b6b6bfbd736586d,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 56d70709ebbc0c8429d768a4c2831077, type: 3}
     - target: {fileID: 4450724177638824464, guid: 2352efa40c33d4047b6b6bfbd736586d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

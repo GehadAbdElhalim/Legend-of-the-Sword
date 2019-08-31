@@ -20,57 +20,67 @@ public class RangedEnemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = transform.GetChild(1).GetComponent<Animator>();
-        agent.SetDestination(target.transform.position);
+        if (!MyGameManager.inConversation)
+        {
+            agent.SetDestination(target.transform.position);
+        }
     }
 
     private void Update()
     {
-
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        if(target == null)
         {
-            agent.isStopped = true;
-            GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
-            if (checkrest && gos.Length <= 1)
-            {
-                FindObjectOfType<MyGameManager>().IncrementState();
-                checkrest = false;
-            }
+            target = GameObject.FindGameObjectWithTag("Player");
         }
-
-        //if(anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
-        //{
-
-        //}
-        double dist = (transform.position - target.transform.position).magnitude;
-        anim.SetBool("Run", !agent.isStopped);
-        if (dist<minDistance){
-            transform.LookAt(target.transform.forward*-1);
-            this.transform.Translate(new Vector3(this.transform.forward.x,0, this.transform.forward.z)*speedFactor);
-
-             anim.SetBool("Run", true);
-             return;
-        }
-        if (!attacking && dist>minDistance)
+        if (!MyGameManager.inConversation)
         {
-            if (dist <= agent.stoppingDistance)
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
             {
                 agent.isStopped = true;
-                GetComponent<Rigidbody>().isKinematic = true;
-                transform.LookAt(target.transform.position);
-                Attack();
+                GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+                if (checkrest && gos.Length <= 1)
+                {
+                    FindObjectOfType<MyGameManager>().IncrementState();
+                    checkrest = false;
+                }
             }
-            else
-            {
-                agent.isStopped = false;
-                GetComponent<Rigidbody>().isKinematic = false;
-                agent.SetDestination(target.transform.position);
-            }
-        }
 
-        if (anim.GetInteger("Attack") == 2)
-        {
-            Invoke("notAttacking", timeBetweenAttack);
-            anim.SetInteger("Attack", 0);
+            //if(anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
+            //{
+
+            //}
+            double dist = (transform.position - target.transform.position).magnitude;
+            anim.SetBool("Run", !agent.isStopped);
+            if (dist < minDistance)
+            {
+                transform.LookAt(target.transform.forward * -1);
+                this.transform.Translate(new Vector3(this.transform.forward.x, 0, this.transform.forward.z) * speedFactor);
+
+                anim.SetBool("Run", true);
+                return;
+            }
+            if (!attacking && dist > minDistance)
+            {
+                if (dist <= agent.stoppingDistance)
+                {
+                    agent.isStopped = true;
+                    GetComponent<Rigidbody>().isKinematic = true;
+                    transform.LookAt(target.transform.position);
+                    Attack();
+                }
+                else
+                {
+                    agent.isStopped = false;
+                    GetComponent<Rigidbody>().isKinematic = false;
+                    agent.SetDestination(target.transform.position);
+                }
+            }
+
+            if (anim.GetInteger("Attack") == 2)
+            {
+                Invoke("notAttacking", timeBetweenAttack);
+                anim.SetInteger("Attack", 0);
+            }
         }
     }
     

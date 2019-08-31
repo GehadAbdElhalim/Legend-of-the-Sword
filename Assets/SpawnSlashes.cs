@@ -10,7 +10,7 @@ public class SpawnSlashes : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Slasher = GameObject.Find("Boss");
+        Slasher = GameObject.FindGameObjectWithTag("Boss");
         Target = GameObject.FindGameObjectWithTag("Player");
         GameObject Slash = Slashes[Random.Range(0, Slashes.Length)];
         GameObject instance = Instantiate(Slash, Slasher.transform.position + new Vector3(0, 0.5f, 0), Slash.transform.rotation);

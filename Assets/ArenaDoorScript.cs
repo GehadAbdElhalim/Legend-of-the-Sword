@@ -8,7 +8,12 @@ public class ArenaDoorScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            FindObjectOfType<MyGameManager>().BlackScreen.GetComponent<Animator>().SetBool("GoBlack", true);
             FindObjectOfType<DialogueManager>().StartDialogue(1);
+            MyGameManager.inConversation = true;
+            MyGameManager.ConversationNumber = 0;
+            FindObjectOfType<MyGameManager>().PositionPlayerInArena1();
+            MyGameManager.GameState = 4;
         }
     }
 }

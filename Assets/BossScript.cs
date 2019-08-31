@@ -19,16 +19,29 @@ public class BossScript : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
-
-        if ( currentTime <= 0 )
+        if (target == null)
         {
-            currentTime = 0;
-            Attack();
+            target = GameObject.FindGameObjectWithTag("Player");
         }
-        else
+        if (!MyGameManager.inConversation)
         {
-            currentTime -= Time.deltaTime;
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+            {
+                MyGameManager.GameState++;
+                FindObjectOfType<MyGameManager>().IncrementState();
+            }
+
+            transform.LookAt(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z));
+
+            if (currentTime <= 0)
+            {
+                currentTime = 0;
+                Attack();
+            }
+            else
+            {
+                currentTime -= Time.deltaTime;
+            }
         }
     }
 
