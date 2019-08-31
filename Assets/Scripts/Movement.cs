@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if (anim.GetInteger("Die") < 1)
+        if (anim.GetInteger("Die") < 1 && !MyGameManager.inConversation)
         {
             if (currentCooldown > 0)
             {
@@ -124,6 +124,16 @@ public class Movement : MonoBehaviour
             if(this.transform.position.y<-100){
             this.transform.position = new Vector3(0f,10f,0f);
             }
+        }
+        else
+        {
+            MyGameManager.PlayerDead = true;
+            GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject go in gos)
+            {
+                Destroy(go.gameObject);
+            }
+            Destroy(this.gameObject);
         }
     }
 

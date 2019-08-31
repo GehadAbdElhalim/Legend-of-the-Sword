@@ -26,7 +26,7 @@ public class MeleeEnemyHealthSystem : MonoBehaviour
             Destroy(other.gameObject);
             if (currentHealth > 0)
             {
-                currentHealth -= 5;
+                currentHealth -= 40;
                 if (currentHealth > 0)
                 {
                     anim.SetTrigger("Hurt");

@@ -11,6 +11,7 @@ public class MeleeEnemy : MonoBehaviour
     Animator anim;
     public float timeBetweenAttack;
     bool endingAttack = false;
+    bool checkrest = true;
 
     private void Start()
     {
@@ -22,6 +23,17 @@ public class MeleeEnemy : MonoBehaviour
     private void Update()
     {
         anim.SetBool("Run", !agent.isStopped);
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        {
+            agent.isStopped = true;
+            GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+            if(checkrest && gos.Length <= 1)
+            {
+                FindObjectOfType<MyGameManager>().IncrementState();
+                checkrest = false;
+            }
+        }
 
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         {

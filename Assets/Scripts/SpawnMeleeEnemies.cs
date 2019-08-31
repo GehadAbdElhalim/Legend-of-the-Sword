@@ -18,9 +18,7 @@ public class SpawnMeleeEnemies : MonoBehaviour
                 go.transform.LookAt(new Vector3(other.transform.position.x,0, other.transform.position.z));
                 go.GetComponent<MeleeEnemy>().target = other.gameObject;
             }
-
-            MyGameManager.GameState = 1;
-            Destroy(this.gameObject);
+            this.GetComponent<Collider>().enabled = false;
         }
     }
 }

@@ -12,6 +12,14 @@ public class MyGameManager : MonoBehaviour
     public Transform[] SpawnPositionsMelee;
     public Transform[] SpawnPositionsRanged;
     public Transform[] SpawnPositionsMixed;
+    public Transform[] checkpoints;
+    public GameObject[] Triggers;
+
+    public Image PlayerHealthBar;
+    public Image PlayerDashBar;
+    public GameObject mainCam;
+
+    public static bool PlayerDead = false;
 
     public Image BlackScreen;
 
@@ -35,11 +43,18 @@ public class MyGameManager : MonoBehaviour
         {
             justEndedConversation = false;
             BlackScreen.GetComponent<Animator>().SetBool("GoBlack", false);
+        }
 
-            if (ConversationNumber == 0)
-            {
-                
-            }
+        if (PlayerDead)
+        {
+            GameObject instance = Instantiate(Player, checkpoints[GameState].transform.position, Quaternion.identity);
+            Player.transform.forward = checkpoints[GameState].forward;
+            Player.GetComponent<Movement>().camera = mainCam;
+            Player.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
+            Player.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
+            mainCam.GetComponent<ThirdPersonCamera>().target = instance.transform;
+            Triggers[GameState].GetComponent<Collider>().enabled = true;
+            PlayerDead = false;
         }
     }
 
@@ -48,6 +63,15 @@ public class MyGameManager : MonoBehaviour
         if (State == 0)
         {
 
+        }
+    }
+
+    public void IncrementState()
+    {
+        if (GameState < 3)
+        {
+            GameState += 1;
+            Triggers[GameState].GetComponent<Collider>().isTrigger = true;
         }
     }
 }

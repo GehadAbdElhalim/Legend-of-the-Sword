@@ -14,6 +14,7 @@ public class RangedEnemy : MonoBehaviour
     public GameObject arrow;
     public int minDistance = 2;
     public float speedFactor = 0.05f;
+    bool checkrest = true;
 
     private void Start()
     {
@@ -24,6 +25,17 @@ public class RangedEnemy : MonoBehaviour
 
     private void Update()
     {
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        {
+            agent.isStopped = true;
+            GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+            if (checkrest && gos.Length <= 1)
+            {
+                FindObjectOfType<MyGameManager>().IncrementState();
+                checkrest = false;
+            }
+        }
 
         //if(anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt"))
         //{
