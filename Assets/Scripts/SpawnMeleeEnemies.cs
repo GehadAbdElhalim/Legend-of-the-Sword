@@ -19,6 +19,9 @@ public class SpawnMeleeEnemies : MonoBehaviour
                 go.GetComponent<MeleeEnemy>().target = other.gameObject;
             }
             this.GetComponent<Collider>().enabled = false;
+
+            FindObjectOfType<MyGameManager>().audio1.Pause();
+            FindObjectOfType<MyGameManager>().audio3.Play();
         }
     }
 }

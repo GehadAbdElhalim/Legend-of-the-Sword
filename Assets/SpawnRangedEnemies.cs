@@ -19,6 +19,9 @@ public class SpawnRangedEnemies : MonoBehaviour
                 go.GetComponent<RangedEnemy>().target = other.gameObject;
             }
             this.GetComponent<Collider>().enabled = false;
+
+            FindObjectOfType<MyGameManager>().audio1.Pause();
+            FindObjectOfType<MyGameManager>().audio3.UnPause();
         }
     }
 }

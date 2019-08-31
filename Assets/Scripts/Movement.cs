@@ -134,6 +134,7 @@ public class Movement : MonoBehaviour
                 if (!executeddeathonce)
                 {
                     MyGameManager.PlayerDead = true;
+                    FindObjectOfType<MyGameManager>().RevivePlayer();
                     GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
                     foreach (GameObject go in gos)
                     {

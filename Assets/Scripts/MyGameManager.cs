@@ -34,10 +34,18 @@ public class MyGameManager : MonoBehaviour
 
     public GameObject DummySword;
 
+    public AudioSource audio1;
 
+    public AudioSource audio2;
+
+    public AudioSource audio3;
 
     private void Start()
     {
+        audio1 = GetComponents<AudioSource>()[0];
+        audio2 = GetComponents<AudioSource>()[1];
+        audio3 = GetComponents<AudioSource>()[2];
+        audio1.Play();
         BlackScreen.GetComponent<Animator>().SetBool("GoBlack", true);
         FindObjectOfType<DialogueManager>().StartDialogue(0);
         inConversation = true;
@@ -56,16 +64,62 @@ public class MyGameManager : MonoBehaviour
             }
         }
 
+        //if (PlayerDead)
+        //{
+        //    print(GameState);
+        //    if (GameState < 3)
+        //    {
+        //        GameObject instance = Instantiate(Player, checkpoints[GameState].transform.position, Quaternion.identity);
+        //        Player.transform.forward = checkpoints[GameState].forward;
+        //        Player.GetComponent<Movement>().camera = mainCam;
+        //        Player.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
+        //        Player.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
+        //        mainCam.GetComponent<ThirdPersonCamera>().target = instance.transform;
+        //        Triggers[GameState].GetComponent<Collider>().enabled = true;
+        //        PlayerDead = false;
+        //    }
+
+        //    if (GameState == 3)
+        //    {
+        //        GameObject instance = Instantiate(Player, PlayerPositionInArena.position, Quaternion.identity);
+        //        Player.transform.forward = PlayerPositionInArena.forward;
+        //        Player.GetComponent<Movement>().camera = mainCam;
+        //        Player.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
+        //        Player.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
+        //        mainCam.GetComponent<ThirdPersonCamera>().target = instance.transform;
+        //        PlayerDead = false;
+        //        PositionPlayerInArena1();
+        //    }
+
+        //    if(GameState == 4)
+        //    {
+        //        GameObject instance = Instantiate(Player, PlayerPositionInArena.position, Quaternion.identity);
+        //        Player.transform.forward = PlayerPositionInArena.forward;
+        //        Player.GetComponent<Movement>().camera = mainCam;
+        //        Player.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
+        //        Player.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
+        //        mainCam.GetComponent<ThirdPersonCamera>().target = instance.transform;
+        //        PlayerDead = false;
+        //        Destroy(GameObject.FindGameObjectWithTag("Boss").gameObject);
+        //        PositionPlayerInArena2();
+        //    }
+        //}
+    }
+
+    public void RevivePlayer()
+    {
         if (PlayerDead)
         {
             print(GameState);
             if (GameState < 3)
             {
+                print("hi");
                 GameObject instance = Instantiate(Player, checkpoints[GameState].transform.position, Quaternion.identity);
-                Player.transform.forward = checkpoints[GameState].forward;
-                Player.GetComponent<Movement>().camera = mainCam;
-                Player.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
-                Player.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
+                print(GameObject.FindGameObjectWithTag("Player"));
+                instance.transform.forward = checkpoints[GameState].forward;
+                instance.GetComponent<Movement>().camera = mainCam;
+                instance.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
+                instance.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
                 mainCam.GetComponent<ThirdPersonCamera>().target = instance.transform;
                 Triggers[GameState].GetComponent<Collider>().enabled = true;
                 PlayerDead = false;
@@ -74,22 +128,22 @@ public class MyGameManager : MonoBehaviour
             if (GameState == 3)
             {
                 GameObject instance = Instantiate(Player, PlayerPositionInArena.position, Quaternion.identity);
-                Player.transform.forward = PlayerPositionInArena.forward;
-                Player.GetComponent<Movement>().camera = mainCam;
-                Player.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
-                Player.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
+                instance.transform.forward = PlayerPositionInArena.forward;
+                instance.GetComponent<Movement>().camera = mainCam;
+                instance.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
+                instance.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
                 mainCam.GetComponent<ThirdPersonCamera>().target = instance.transform;
                 PlayerDead = false;
                 PositionPlayerInArena1();
             }
 
-            if(GameState == 4)
+            if (GameState == 4)
             {
                 GameObject instance = Instantiate(Player, PlayerPositionInArena.position, Quaternion.identity);
-                Player.transform.forward = PlayerPositionInArena.forward;
-                Player.GetComponent<Movement>().camera = mainCam;
-                Player.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
-                Player.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
+                instance.transform.forward = PlayerPositionInArena.forward;
+                instance.GetComponent<Movement>().camera = mainCam;
+                instance.GetComponent<PlayerHealthBar>().CooldownBar = PlayerDashBar;
+                instance.GetComponent<PlayerHealthBar>().healthBar = PlayerHealthBar;
                 mainCam.GetComponent<ThirdPersonCamera>().target = instance.transform;
                 PlayerDead = false;
                 Destroy(GameObject.FindGameObjectWithTag("Boss").gameObject);
@@ -105,6 +159,8 @@ public class MyGameManager : MonoBehaviour
         {
             GameState += 1;
             Triggers[GameState].GetComponent<Collider>().isTrigger = true;
+            FindObjectOfType<MyGameManager>().audio3.Pause();
+            FindObjectOfType<MyGameManager>().audio1.UnPause();
         }
 
         if (GameState == 4)
@@ -114,6 +170,9 @@ public class MyGameManager : MonoBehaviour
             inConversation = true;
             ConversationNumber = 2;
             PositionPlayerInArena2();
+            FindObjectOfType<MyGameManager>().audio1.Pause();
+            FindObjectOfType<MyGameManager>().audio3.Pause();
+            FindObjectOfType<MyGameManager>().audio2.Play();
         }
 
         if(GameState == 5)
@@ -122,11 +181,18 @@ public class MyGameManager : MonoBehaviour
             FindObjectOfType<DialogueManager>().StartDialogue(3);
             inConversation = true;
             ConversationNumber = 3;
+            FindObjectOfType<MyGameManager>().audio2.Pause();
+            FindObjectOfType<MyGameManager>().audio3.Pause();
+            FindObjectOfType<MyGameManager>().audio1.Play();
         }
     }
 
     public void PositionPlayerInArena1()
     {
+        FindObjectOfType<MyGameManager>().audio1.Pause();
+        FindObjectOfType<MyGameManager>().audio3.UnPause();
+        FindObjectOfType<MyGameManager>().audio2.Pause();
+
         GameObject PlayerInstance = GameObject.FindGameObjectWithTag("Player");
         PlayerInstance.transform.position = PlayerPositionInArena.position;
         PlayerInstance.transform.forward = PlayerPositionInArena.forward;

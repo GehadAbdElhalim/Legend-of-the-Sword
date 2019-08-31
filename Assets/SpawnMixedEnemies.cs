@@ -31,6 +31,9 @@ public class SpawnMixedEnemies : MonoBehaviour
                 melee = !melee;
             }
             this.GetComponent<Collider>().enabled = false;
+
+            FindObjectOfType<MyGameManager>().audio1.Pause();
+            FindObjectOfType<MyGameManager>().audio3.UnPause();
         }
     }
 }

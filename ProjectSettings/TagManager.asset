@@ -12,6 +12,7 @@ TagManager:
   - slash
   - EnemySlash
   - spear
+  - Boss
   layers:
   - Default
   - TransparentFX
