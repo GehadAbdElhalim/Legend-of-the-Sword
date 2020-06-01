@@ -149,6 +149,10 @@ public class MyGameManager : MonoBehaviour
                 Destroy(GameObject.FindGameObjectWithTag("Boss").gameObject);
                 PositionPlayerInArena2();
             }
+
+            Movement.inCombat = false;
+            Movement.canGetInput = false;
+            Movement.comboCounter = 0;
         }
     }
 
